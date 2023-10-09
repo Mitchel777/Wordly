@@ -49,7 +49,4 @@ public class User {
         System.out.println("Введите ваше имя...");
         this.name = in.nextLine();
     }
-
-
-
 }
