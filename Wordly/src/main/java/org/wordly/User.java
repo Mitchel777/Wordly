@@ -6,11 +6,12 @@ public class User {
     private String name;
 
     public User() {
-        this.getName();
-        this.hello();
-        this.requests();
+        setName();
+        sayHello();
+        help();
+        requests();
     }
-    private void requests(){
+    public void requests(){
         Scanner in = new Scanner(System.in);
         String input = "";
         boolean flag = true;
@@ -18,35 +19,47 @@ public class User {
             input = in.nextLine();
             switch (input){
                 case "/help": {
-                    System.out.println("/hello\t\tприветсвует Вас");
-                    System.out.println("/help\t\tвыводит справочную информацию");
-                    System.out.println("/changeName\t\tменяет ваше имя в программе");
+                    help();
                     break;
                 }
-                case "/hello": {
-                    this.hello();
+                case "/sayHello": {
+                    sayHello();
                     break;
                 }
                 case "break": {
                     flag = false;
                     break;
                 }
-                case "changeName": {
-                    getName();
+                case "/changeName": {
+                    setName();
+                    break;
                 }
                 default: {
-                    System.out.println(input + "\tне является внутренней или внешней командой");
+                    uncorrectData(input);
                     break;
                 }
             }
         }
     }
-    public void hello() {
-        System.out.println("Привет, " + this.name + "!");
+    private void sayHello() {
+        System.out.println("Привет, " + this.name + "!\n");
     }
-    private void getName() {
+
+    private void help() {
+        System.out.println("/sayHello\t\t\tприветсвует Вас");
+        System.out.println("/help\t\t\tвыводит справочную информацию");
+        System.out.println("/changeName\t\tменяет ваше имя в программе\n");
+    }
+    private void setName() {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите ваше имя...");
         this.name = in.nextLine();
+        System.out.println();
     }
+
+    private void uncorrectData(String data) {
+        System.out.println(data + "\t\tне является внутренней или внешней командой\n");
+    }
+
+
 }
