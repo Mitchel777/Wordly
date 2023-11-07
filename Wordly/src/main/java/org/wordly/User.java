@@ -5,61 +5,66 @@ import java.util.Scanner;
 public class User {
     private String name;
 
-    public User() {
-        setName();
-        sayHello();
-        help();
-        requests();
+    public User(boolean test) {
+        if (!test) {
+            System.out.println(setName(inputName()));
+            System.out.println(help());
+        }
     }
+
     public void requests(){
         Scanner in = new Scanner(System.in);
         String input = "";
         boolean flag = true;
         while (flag) {
             input = in.nextLine();
-            switch (input){
-                case "/help": {
-                    help();
-                    break;
-                }
-                case "/sayHello": {
-                    sayHello();
-                    break;
-                }
-                case "break": {
-                    flag = false;
-                    break;
-                }
-                case "/changeName": {
-                    setName();
-                    break;
-                }
-                default: {
-                    uncorrectData(input);
-                    break;
-                }
-            }
+            System.out.println(process(input));
         }
     }
-    private void sayHello() {
-        System.out.println("Привет, " + this.name + "!\n");
+    private String sayHello() {
+        return "Привет, " + name + "!\n";
     }
 
-    private void help() {
-        System.out.println("/sayHello\t\t\tприветсвует Вас");
-        System.out.println("/help\t\t\tвыводит справочную информацию");
-        System.out.println("/changeName\t\tменяет ваше имя в программе\n");
+    private String help() {
+        return "/sayHello\t\t\tприветсвует Вас\n/help\t\t\tвыводит справочную информацию\n/changeName\t\tменяет ваше имя в программе\n";
     }
-    private void setName() {
+
+    private String inputName(){
         Scanner in = new Scanner(System.in);
         System.out.println("Введите ваше имя...");
-        this.name = in.nextLine();
-        System.out.println();
+        return in.nextLine();
+    }
+    public String setName(String name) {
+        this.name = name;
+        return sayHello();
     }
 
-    private void uncorrectData(String data) {
-        System.out.println(data + "\t\tне является внутренней или внешней командой\n");
+    private String uncorrectData(String data) {
+        return data + "\t\tне является внутренней или внешней командой\n";
     }
 
+
+    private String process(String input) {
+        String message = "";
+        switch (input) {
+            case "/help": {
+                message = help();
+                break;
+            }
+            case "/sayHello": {
+                message = sayHello();
+                break;
+            }
+            case "/changeName": {
+                message = setName(inputName());
+                break;
+            }
+            default: {
+                message = uncorrectData(input);
+                break;
+            }
+        }
+        return message;
+    }
 
 }
