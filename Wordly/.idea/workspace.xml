@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0aad7c8e-e22a-45ff-80b2-101cc6262699" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/wordly/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/wordly/UserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +77,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.requests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTest.processTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
@@ -85,13 +87,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.wordly" />
       <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
-      <option name="METHOD_NAME" value="requests" />
+      <option name="METHOD_NAME" value="processTest([Ljava.lang.String;)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.sayHello" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTest.processTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
@@ -101,13 +103,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.wordly" />
       <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
-      <option name="METHOD_NAME" value="sayHello" />
+      <option name="METHOD_NAME" value="processTest(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.uncorrectData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTest.processTest (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
@@ -117,7 +119,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.wordly" />
       <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
-      <option name="METHOD_NAME" value="uncorrectData" />
+      <option name="METHOD_NAME" value="processTest(java.lang.String,java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -127,9 +129,9 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.UserTest.uncorrectData" />
-        <item itemvalue="JUnit.UserTest.sayHello" />
-        <item itemvalue="JUnit.UserTest.requests" />
+        <item itemvalue="JUnit.UserTest.processTest (3)" />
+        <item itemvalue="JUnit.UserTest.processTest (2)" />
+        <item itemvalue="JUnit.UserTest.processTest (1)" />
       </list>
     </recent_temporary>
   </component>

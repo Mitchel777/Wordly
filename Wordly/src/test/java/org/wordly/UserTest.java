@@ -1,54 +1,31 @@
 package org.wordly;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+
 import java.lang.reflect.Method;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
-    User user;
-
-    @org.junit.Test
-    public void requests(){
-        String input = new String("/dwewewec");
-        String actual = "uncorrectData";
-        String out = "";
-        switch (input) {
-            case "/help": {
-                out = "help";
-                break;
-            }
-            case "/hello": {
-                out = "hello";
-                break;
-            }
-            case "break": {
-                out = "break";
-                break;
-            }
-            case "/changeName": {
-                out = "setName";
-                break;
-            }
-            default: {
-                out = "uncorrectData";
-                break;
-            }
+    private User user = new User(true);
+    @ParameterizedTest
+    @MethodSource("processTest")
+    public void processTest(String command, String expected) {
+        try {
+            user.setName("Вася");
+            Method method = User.class.getDeclaredMethod("process", String.class);
+            method.setAccessible(true);
+            assertEquals(expected, method.invoke(user, command));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        assertEquals(out, actual);
-    }
 
-    @org.junit.Test
-    public void sayHello(){
-        String name = new String("Oleg");
-        String actual = new String("Hello, Oleg!");
-        assertEquals("Hello, " + name + "!", actual);
     }
-
-    @org.junit.Test
-    public void uncorrectData(){
-        String input = new String("/heeelp");
-        String actual = new String("/heeelp\t\tне является внутренней или внешней командой");
-        assertEquals(input + "\t\tне является внутренней или внешней командой", actual);
+    static Stream<Arguments> processTest() {
+        return Stream.of(Arguments.of("/help", "/sayHello\t\t\tприветсвует Вас\n/help\t\t\tвыводит справочную информацию\n/changeName\t\tменяет ваше имя в программе\n"), Arguments.of("/sayHello", "Привет, Вася!\n"), Arguments.of("/heeelp", "/heeelp\t\tне является внутренней или внешней командой\n"));
     }
-
 }
