@@ -1,70 +1,30 @@
 package org.wordly;
 
-import java.util.Scanner;
+import org.wordly.command.Command;
+import org.wordly.command.ProcessCommand;
 
 public class User {
-    private String name;
 
-    public User(boolean test) {
-        if (!test) {
-            System.out.println(setName(inputName()));
-            System.out.println(help());
-        }
+    private final long chatID;
+    private Command nextCommand = new ProcessCommand();
+
+    public User(long chatID) {
+        this.chatID = chatID;
     }
 
-    public void requests(){
-        Scanner in = new Scanner(System.in);
-        String input = "";
-        boolean flag = true;
-        while (flag) {
-            input = in.nextLine();
-            System.out.println(process(input));
-        }
-    }
-    private String sayHello() {
-        return "Привет, " + name + "!\n";
+    public long getChatID() {
+        return chatID;
     }
 
-    private String help() {
-        return "/sayHello\t\t\tприветсвует Вас\n/help\t\t\tвыводит справочную информацию\n/changeName\t\tменяет ваше имя в программе\n";
+    public void changeCommand(Command nextCommand) {
+        this.nextCommand = nextCommand;
     }
 
-    private String inputName(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Введите ваше имя...");
-        return in.nextLine();
-    }
-    public String setName(String name) {
-        this.name = name;
-        return sayHello();
-    }
-
-    private String uncorrectData(String data) {
-        return data + "\t\tне является внутренней или внешней командой\n";
-    }
-
-
-    private String process(String input) {
-        String message = "";
-        switch (input) {
-            case "/help": {
-                message = help();
-                break;
-            }
-            case "/sayHello": {
-                message = sayHello();
-                break;
-            }
-            case "/changeName": {
-                message = setName(inputName());
-                break;
-            }
-            default: {
-                message = uncorrectData(input);
-                break;
-            }
-        }
-        return message;
+    public String nextState(String message) {
+        Command command = nextCommand.react(message, this);
+        String commandMessage = nextCommand.getMessage();
+        nextCommand = command;
+        return commandMessage;
     }
 
 }
