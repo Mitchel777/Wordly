@@ -1,6 +1,7 @@
 package org.wordly.command;
 
 import org.wordly.User;
+import org.wordly.command.game.Game;
 
 public class ProcessCommand implements Command {
 
@@ -19,8 +20,10 @@ public class ProcessCommand implements Command {
                 yield new ProcessCommand();
             }
             case "/play" -> {
-                this.message = "Игра началась";
-                yield new ProcessCommand();
+                user.randomWord();
+                user.setUserAttemptsZero();
+                this.message = "Введите слово из 5 букв";
+                yield new Game();
             }
             default -> {
                 this.message = "Бот не знает такой команды (\nБот знает команды:\n1)play - Начать игру\n2)help - Информация о боте";
