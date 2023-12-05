@@ -6,6 +6,8 @@ import org.wordly.command.ProcessCommand;
 public class User {
 
     private final long chatID;
+    private int userAttempts;
+    private String word = "";
     private Command nextCommand = new ProcessCommand();
 
     public User(long chatID) {
@@ -25,6 +27,27 @@ public class User {
         String commandMessage = nextCommand.getMessage();
         nextCommand = command;
         return commandMessage;
+    }
+
+    public int getUserAttempts() {
+        return userAttempts;
+    }
+
+    public void setUserAttemptsZero() {
+        userAttempts = 0;
+    }
+
+    public void increaseUserAttempts() {
+        userAttempts++;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void randomWord() {
+        //...
+        word = "абвгд";
     }
 
 }
