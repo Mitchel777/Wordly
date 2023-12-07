@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0aad7c8e-e22a-45ff-80b2-101cc6262699" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/Wordly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/Wordly.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/command/ProcessCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/command/ProcessCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,12 +49,15 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.wordly" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.wordly" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.org.wordly.Main">
+    <configuration name="org.wordly.Main" type="Application" factoryName="Application" temporary="true">
       <envs>
         <env name="TOKEN" value="6969029946:AAGIjK1m6yhFfact983Rzopf0jeUTbZLCfI" />
       </envs>
@@ -60,7 +65,7 @@
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.wordly.*" />
+          <option name="PATTERN" value="org.wordly.command.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -68,22 +73,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGame (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.wordly.*" />
+          <option name="PATTERN" value="org.wordly.command.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.wordly" />
-      <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
+      <option name="PACKAGE_NAME" value="org.wordly.command" />
+      <option name="MAIN_CLASS_NAME" value="org.wordly.command.TestGame" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
@@ -92,13 +97,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.wordly" />
-      <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
+      <option name="MAIN_CLASS_NAME" value="org.wordly.TestGame" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.processTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGame.testGame (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
@@ -107,57 +112,43 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.wordly" />
-      <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
-      <option name="METHOD_NAME" value="processTest(java.lang.String)" />
+      <option name="MAIN_CLASS_NAME" value="org.wordly.TestGame" />
+      <option name="METHOD_NAME" value="testGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.processTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGame.testGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.wordly.*" />
+          <option name="PATTERN" value="org.wordly.command.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.wordly" />
-      <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
-      <option name="METHOD_NAME" value="processTest(java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserTest.processTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Wordly" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.wordly.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.wordly" />
-      <option name="MAIN_CLASS_NAME" value="org.wordly.UserTest" />
-      <option name="METHOD_NAME" value="processTest(java.lang.String,java.lang.String)" />
+      <option name="PACKAGE_NAME" value="org.wordly.command" />
+      <option name="MAIN_CLASS_NAME" value="org.wordly.command.TestGame" />
+      <option name="METHOD_NAME" value="testGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.UserTest" />
-      <item itemvalue="JUnit.UserTest.processTest" />
-      <item itemvalue="JUnit.UserTest.processTest (2)" />
+      <item itemvalue="Application.org.wordly.Main" />
+      <item itemvalue="JUnit.TestGame (2)" />
+      <item itemvalue="JUnit.TestGame.testGame" />
+      <item itemvalue="JUnit.TestGame.testGame (1)" />
+      <item itemvalue="JUnit.TestGame" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.UserTest.processTest (2)" />
+        <item itemvalue="Application.org.wordly.Main" />
+        <item itemvalue="JUnit.TestGame" />
+        <item itemvalue="JUnit.TestGame.testGame (1)" />
+        <item itemvalue="JUnit.TestGame.testGame" />
+        <item itemvalue="JUnit.TestGame (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -176,9 +167,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/wordly/command/game/Game.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/wordly/User.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

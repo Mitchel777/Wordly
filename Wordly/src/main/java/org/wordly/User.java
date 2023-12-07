@@ -2,6 +2,8 @@ package org.wordly;
 
 import org.wordly.command.Command;
 import org.wordly.command.ProcessCommand;
+import java.io.*;
+import java.util.*;
 
 public class User {
 
@@ -45,9 +47,30 @@ public class User {
         return word;
     }
 
+    public void setWord(String word) {
+        this.word = word;
+    }
+
     public void randomWord() {
-        //...
-        word = "абвгд";
+        String words = "src/main/resources/words.txt";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(words));
+            int randomNumber = (int) (Math.random() * 1446) + 1;
+            List<String> lines = new ArrayList<>();
+            int counter = 0;
+            String line = reader.readLine();
+            while (counter != randomNumber) {
+                lines.add(line);
+                line = reader.readLine();
+                counter += 1;
+            }
+            reader.close();
+            String word = lines.get(randomNumber - 1);
+            setWord(word);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
