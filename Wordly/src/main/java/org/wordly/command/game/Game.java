@@ -12,9 +12,11 @@ public class Game implements Command {
     private final int maxAttempts = 6;
 
     @Override
-    public Command react(String word, User user) {
+    public Command react(String userWord, User user) {
 
-        boolean isCorrectWord = (word.equals(user.getWord()));
+        //проверка
+        String word = user.getWord();
+        boolean isCorrectWord = word.equals(userWord);
 
         if (isCorrectWord) {
 
@@ -23,7 +25,7 @@ public class Game implements Command {
         }
         else {
 
-            message = checkigLetters(word, user.getWord());
+            message = checkLetters(word, userWord, user);
             user.increaseUserAttempts();
             if (user.getUserAttempts() == maxAttempts) {
 
@@ -42,28 +44,39 @@ public class Game implements Command {
         return message;
     }
 
-    private String checkigLetters(String word, String hiddenWord) {
-        int countOfCheckingLetters = Math.min(word.length(), hiddenWord.length());
+    private String checkLetters(String word, String userWord, User user) {
+        int countOfCheckingLetters = Math.min(word.length(), userWord.length());
         String result = "";
-        ArrayList<Number> guessedIndexes = new ArrayList<Number>();
-        ArrayList<String> arrayResult= new ArrayList<String>();
+        ArrayList<Integer> guessedIndexes1 = new ArrayList<Integer>();
+        String[] arrayResult = {"", "", "", "", ""};
         // проверка на совадение соответсвенных букв в словах
         for (int i = 0; i < countOfCheckingLetters; i++) {
-            if (word.charAt(i) == hiddenWord.charAt(i)) {
-                arrayResult.add(i, convertingNumbersToNumerals(i+1) + "буква в Вашем слове находится на том же месте, что и в загаданном слове\n");
-                guessedIndexes.add(i);
+            if (word.charAt(i) == userWord.charAt(i)) {
+                arrayResult[i] = convertingNumbersToNumerals(i+1) + "буква в Вашем слове находится на том же месте, что и в загаданном слове\n";
+                guessedIndexes1.add(i);
+                user.storageModel += 2 * Math.pow(10, word.length() - i - 1);
             }
         }
         // проверка на нахождение буквы в слове(но не на той позиции)
+        ArrayList <Integer> guessedIndexes2 = new ArrayList<Integer>();
+        for (int i : guessedIndexes1) {
+            guessedIndexes2.add(i);
+        }
         for (int i = 0; i < countOfCheckingLetters; i++) {
-            String symbol = word.substring(i, i+1);
-            if (hiddenWord.contains(symbol)) {
-                if (!guessedIndexes.contains(i)) {
-                    arrayResult.add(i, convertingNumbersToNumerals(i + 1) + "буква в Вашем слове находится в загаданном слове, но не на той позиции\n");
+            String symbol = userWord.substring(i, i+1);
+            if (!guessedIndexes1.contains(i)) {
+                if (word.contains(symbol)) {
+                    int index = isThisLetterInWord(word, symbol, guessedIndexes2);
+                    if (index != -1) {
+                        guessedIndexes2.add(index);
+                        arrayResult[i] = convertingNumbersToNumerals(i + 1) + "буква в Вашем слове находится в загаданном слове, но не на той позиции\n";
+                        user.storageModel += Math.pow(10, word.length() - i - 1);
+                    } else {
+                        arrayResult[i] = convertingNumbersToNumerals(i + 1) + "буква в Вашем слове не находится в загаданном слове\n";
+                    }
+                } else {
+                    arrayResult[i] = convertingNumbersToNumerals(i + 1) + "буква в Вашем слове не находится в загаданном слове\n";
                 }
-            }
-            else {
-                arrayResult.add(i, convertingNumbersToNumerals(i+1) + "буква в Вашем слове не находится в загаданном слове\n");
             }
         }
 
@@ -71,7 +84,19 @@ public class Game implements Command {
             result = result.concat(str);
         }
 
+        user.storageModel = 0;
+
         return result;
+
+    }
+
+    private int isThisLetterInWord(String word, String symbol, ArrayList<Integer> guessedIndexes) {
+        for (int i = 0; i < word.length(); i++) {
+            if (word.substring(i, i+1).equals(symbol) && !guessedIndexes.contains(i)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private String convertingNumbersToNumerals(int number) {
