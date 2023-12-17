@@ -9,7 +9,8 @@ public class User {
 
     private final long chatID;
     private int userAttempts;
-    private String word = "";
+    private String word;
+    public short storageModel = 0;
     private Command nextCommand = new ProcessCommand();
 
     public User(long chatID) {
