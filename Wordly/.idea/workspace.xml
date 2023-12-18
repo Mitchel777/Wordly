@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0aad7c8e-e22a-45ff-80b2-101cc6262699" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/command/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/command/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/Wordly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/Wordly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/command/ProcessCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/command/ProcessCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/words.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/wordly/TestGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/wordly/TestGame.java" afterDir="false" />
     </list>

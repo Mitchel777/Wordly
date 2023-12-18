@@ -11,7 +11,7 @@ public class TestGame extends TestCommands {
 
     void setWord() {
         User user = getDefaultUser();
-        user.setWord("слово");
+        //user.setWord("слово");
     }
 
     @Test

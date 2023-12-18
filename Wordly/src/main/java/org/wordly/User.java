@@ -11,10 +11,12 @@ public class User {
     private int userAttempts;
     private String word;
     public short storageModel = 0;
+    public Wordly wordly;
     private Command nextCommand = new ProcessCommand();
 
-    public User(long chatID) {
+    public User(long chatID, Wordly wordly) {
         this.chatID = chatID;
+        this.wordly = wordly;
     }
 
     public long getChatID() {
@@ -48,8 +50,8 @@ public class User {
         return word;
     }
 
-    public void setWord(String word) {
-        this.word = word;
+    public void setWord() {
+        this.word = wordly.getWord();
     }
 
     public void randomWord() {
@@ -67,7 +69,7 @@ public class User {
             }
             reader.close();
             String word = lines.get(randomNumber - 1);
-            setWord(word);
+            setWord();
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
