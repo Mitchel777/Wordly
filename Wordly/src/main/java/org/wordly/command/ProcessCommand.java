@@ -20,7 +20,7 @@ public class ProcessCommand implements Command {
                 yield new ProcessCommand();
             }
             case "/game" -> {
-                user.randomWord();
+                user.setWord();
                 user.setUserAttemptsZero();
                 this.message = "Введите слово из 5 букв";
                 yield new Game();
