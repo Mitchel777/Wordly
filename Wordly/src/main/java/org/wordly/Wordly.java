@@ -108,6 +108,7 @@ public class Wordly extends TelegramLongPollingBot {
 
     private SendMessage processCommand(User user, Update update) {
 
+
         boolean isCommand = update.getMessage().getText().startsWith("/");
         if (isCommand) {
             user.changeCommand(new ProcessCommand());
@@ -116,6 +117,7 @@ public class Wordly extends TelegramLongPollingBot {
         String response = user.nextState(update.getMessage().getText());
 
         SendMessage message = new SendMessage();
+        message.enableHtml(true);
         message.setChatId(update.getMessage().getChatId());
         message.setText(response);
 

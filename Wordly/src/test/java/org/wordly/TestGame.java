@@ -2,68 +2,99 @@ package org.wordly;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.wordly.command.game.Game;
 
+import java.lang.reflect.Method;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TestGame extends TestCommands {
+    public Game game = new Game();
 
-    void setWord() {
+    @Test
+    public void testCheckLetters1() {
+        String word = "слово";
+        String userWord = "волос";
         User user = getDefaultUser();
-        //user.setWord("слово");
+
+
+        try {
+            Method method = Game.class.getDeclaredMethod("checkLetters", String.class, String.class, User.class);
+
+            method.setAccessible(true);
+
+            Assert.assertEquals(method.invoke(game, word, userWord, user), (short)11111);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void testGame1() {
+    public void testCheckLetters2() {
+        String word = "баран";
+        String userWord = "квант";
+        User user = getDefaultUser();
 
-        sendDefaultUserMessage("/game");
-        setWord();
-        sendDefaultUserMessage("слово");
 
-        Assert.assertEquals(lastAnswer, "Вы угадали слово, поздравляем!!!");
-    }
-    @Test
-    public void testGame2() {
+        try {
+            Method method = Game.class.getDeclaredMethod("checkLetters", String.class, String.class, User.class);
 
-        sendDefaultUserMessage("/game");
-        setWord();
-        sendDefaultUserMessage("солбг");
+            method.setAccessible(true);
 
-        Assert.assertEquals(lastAnswer, """
-                Первая буква в Вашем слове находится на том же месте, что и в загаданном слове
-                Вторая буква в Вашем слове находится в загаданном слове, но не на той позиции
-                Третья буква в Вашем слове находится в загаданном слове, но не на той позиции
-                Четвертая буква в Вашем слове не находится в загаданном слове
-                Пятая буква в Вашем слове не находится в загаданном слове
-                    
-                Введите слово из 5 букв""");
+            Assert.assertEquals(method.invoke(game, word, userWord, user), (short)110);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test
-    public void testGame3() {
+    public void testCheckLetters3() {
+        String word = "олень";
+        String userWord = "карат";
+        User user = getDefaultUser();
 
-        sendDefaultUserMessage("/game");
-        setWord();
-        sendDefaultUserMessage("кфыпр");
 
-        Assert.assertEquals(lastAnswer, "Первая буква в Вашем слове не находится в загаданном слове\nВторая буква в Вашем слове не находится в загаданном слове\nТретья буква в Вашем слове не находится в загаданном слове\nЧетвертая буква в Вашем слове не находится в загаданном слове\nПятая буква в Вашем слове не находится в загаданном слове\n\nВведите слово из 5 букв");
+        try {
+            Method method = Game.class.getDeclaredMethod("checkLetters", String.class, String.class, User.class);
+
+            method.setAccessible(true);
+
+            Assert.assertEquals(method.invoke(game, word, userWord, user), (short)0);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test
-    public void testHelp() {
-        sendDefaultUserMessage("/help");
+    public void testIsWordInFile1() {
+        String userWord = "пчела";
+        try {
+            Method method = Game.class.getDeclaredMethod("isWordInFile", String.class);
 
-        Assert.assertEquals(lastAnswer, "Это бот, с которым можно сыграть в игру Wordly\nПравила игры:\n1) Бот загадывает слово из 5 букв, а ваша задача заключается в том, чтобы его разгадать\n2) Вам дается 6 попыток\n3) Если вы угадаете букву в этом слове, но она будет не на том месте, то она подсветится оранжевым\n4) Если же вы угадаете букву и на будет на том месте, то она подсветится зеленым\n\nБот знает команды:\n1)game - Начать игру\n2)help - Информация о боте");
+            method.setAccessible(true);
+
+            Assert.assertEquals(method.invoke(game, userWord), true);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void testUncorrectRequest() {
-        sendDefaultUserMessage("/sadsad");
+    public void testIsWordInFile2() {
+        String userWord = "клнур";
+        try {
+            Method method = Game.class.getDeclaredMethod("isWordInFile", String.class);
 
-        Assert.assertEquals(lastAnswer, "Бот не знает такой команды (\nБот знает команды:\n1)game - Начать игру\n2)help - Информация о боте");
+            method.setAccessible(true);
+
+            Assert.assertEquals(method.invoke(game, userWord), false);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
-
 }

@@ -23,6 +23,10 @@ public class User {
         return chatID;
     }
 
+    public void setStorageModelZero() {
+        storageModel = 0;
+    }
+
     public void changeCommand(Command nextCommand) {
         this.nextCommand = nextCommand;
     }
@@ -53,27 +57,4 @@ public class User {
     public void setWord() {
         this.word = wordly.getWord();
     }
-
-    public void randomWord() {
-        String words = "src/main/resources/words.txt";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(words));
-            int randomNumber = (int) (Math.random() * 1446) + 1;
-            List<String> lines = new ArrayList<>();
-            int counter = 0;
-            String line = reader.readLine();
-            while (counter != randomNumber) {
-                lines.add(line);
-                line = reader.readLine();
-                counter += 1;
-            }
-            reader.close();
-            String word = lines.get(randomNumber - 1);
-            setWord();
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
 }
