@@ -5,6 +5,8 @@ import org.wordly.command.Command;
 import org.wordly.command.ProcessCommand;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class Game implements Command {
@@ -16,16 +18,32 @@ public class Game implements Command {
 
         //проверка
         String word = user.getWord();
-        boolean isCorrectWord = word.equals(userWord);
 
-        if (isCorrectWord) {
 
+        if (userWord.length() != 5) {
+            if (userWord.length() > 5) {
+                message = "Длина слова превышает 5 букв. Попробуйте снова";
+            }
+            else {
+                message = "Длина слова менее 5 букв. Попробуйте снова";
+            }
+            return new Game();
+        }
+
+        if (!isWordInFile(userWord)) {
+            message = "Я не знаю такого слова. Введите другое";
+            return new Game();
+        }
+
+        if (word.equals(userWord)) {
             message = "Вы угадали слово, поздравляем!!!";
             return new ProcessCommand();
         }
         else {
 
-            message = checkLetters(word, userWord, user);
+
+            message = printResult(checkLetters(word, userWord, user), userWord);
+            user.setStorageModelZero();
             user.increaseUserAttempts();
             if (user.getUserAttempts() == maxAttempts) {
 
@@ -44,15 +62,33 @@ public class Game implements Command {
         return message;
     }
 
-    private String checkLetters(String word, String userWord, User user) {
-        int countOfCheckingLetters = Math.min(word.length(), userWord.length());
-        String result = "";
+    private String printResult(short storageModel, String userWord) {
+        String result = new String();
+        String number = String.valueOf(storageModel);
+        int len = userWord.length() - number.length();
+        for (int i = 0; i < len; i++) {
+            result += userWord.substring(i, i+1);
+        }
+
+        for (int i = len; i < userWord.length(); i++) {
+            if (number.charAt(i - len) == '2') {
+                result += "<b>" + userWord.charAt(i) + "</b>";
+            }
+            else if (number.charAt(i - len) == '1') {
+                result += "<i>" + userWord.charAt(i) + "</i>";
+            }
+            else {
+                result += userWord.substring(i, i+1);
+            }
+        }
+        return result;
+    }
+
+    private short checkLetters(String word, String userWord, User user) {
         ArrayList<Integer> guessedIndexes1 = new ArrayList<Integer>();
-        String[] arrayResult = {"", "", "", "", ""};
         // проверка на совадение соответсвенных букв в словах
-        for (int i = 0; i < countOfCheckingLetters; i++) {
+        for (int i = 0; i < word.length(); i++) {
             if (word.charAt(i) == userWord.charAt(i)) {
-                arrayResult[i] = convertingNumbersToNumerals(i+1) + "буква в Вашем слове находится на том же месте, что и в загаданном слове\n";
                 guessedIndexes1.add(i);
                 user.storageModel += 2 * Math.pow(10, word.length() - i - 1);
             }
@@ -62,32 +98,20 @@ public class Game implements Command {
         for (int i : guessedIndexes1) {
             guessedIndexes2.add(i);
         }
-        for (int i = 0; i < countOfCheckingLetters; i++) {
+        for (int i = 0; i < word.length(); i++) {
             String symbol = userWord.substring(i, i+1);
             if (!guessedIndexes1.contains(i)) {
                 if (word.contains(symbol)) {
                     int index = isThisLetterInWord(word, symbol, guessedIndexes2);
                     if (index != -1) {
                         guessedIndexes2.add(index);
-                        arrayResult[i] = convertingNumbersToNumerals(i + 1) + "буква в Вашем слове находится в загаданном слове, но не на той позиции\n";
                         user.storageModel += Math.pow(10, word.length() - i - 1);
-                    } else {
-                        arrayResult[i] = convertingNumbersToNumerals(i + 1) + "буква в Вашем слове не находится в загаданном слове\n";
                     }
-                } else {
-                    arrayResult[i] = convertingNumbersToNumerals(i + 1) + "буква в Вашем слове не находится в загаданном слове\n";
                 }
             }
         }
 
-        for (String str : arrayResult) {
-            result = result.concat(str);
-        }
-
-        user.storageModel = 0;
-
-        return result;
-
+        return user.storageModel;
     }
 
     private int isThisLetterInWord(String word, String symbol, ArrayList<Integer> guessedIndexes) {
@@ -99,29 +123,18 @@ public class Game implements Command {
         return -1;
     }
 
-    private String convertingNumbersToNumerals(int number) {
-        String result;
-        switch (number) {
-            case 1 -> {
-                result = "Первая ";
+    private boolean isWordInFile(String word) {
+        String fileName = "src/main/resources/words.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().equalsIgnoreCase(word)) {
+                    return true;
+                }
             }
-            case 2 -> {
-                result = "Вторая ";
-            }
-            case 3 -> {
-                result = "Третья ";
-            }
-            case 4 -> {
-                result = "Четвертая ";
-            }
-            case 5 -> {
-                result = "Пятая ";
-            }
-            default -> {
-                result = String.valueOf(number);
-            }
-
-        };
-        return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
     }
 }

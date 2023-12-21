@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0aad7c8e-e22a-45ff-80b2-101cc6262699" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/wordly/TestSimpleCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/Wordly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/Wordly.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/command/ProcessCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/command/ProcessCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/words.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/wordly/TestGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/wordly/TestGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wordly/command/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wordly/command/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/wordly/TestGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/wordly/TestSimpleCommand.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,8 @@
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Миша/OneDrive/Рабочий стол/Wordly/Wordly/src/main/java/org/wordly/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.idesettings.debugger.capture&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -59,23 +61,7 @@
       <recent name="org.wordly" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.org.wordly.Main">
-    <configuration name="org.wordly.Main" type="Application" factoryName="Application" temporary="true">
-      <envs>
-        <env name="TOKEN" value="6969029946:AAGIjK1m6yhFfact983Rzopf0jeUTbZLCfI" />
-      </envs>
-      <option name="MAIN_CLASS_NAME" value="org.wordly.Main" />
-      <module name="Wordly" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.wordly.command.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestSimpleCommands.testIncorrectRequest">
     <configuration name="TestGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
@@ -91,7 +77,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestGame.testGame (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGame.testCheckLetters2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
@@ -101,29 +87,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.wordly" />
       <option name="MAIN_CLASS_NAME" value="org.wordly.TestGame" />
-      <option name="METHOD_NAME" value="testGame" />
+      <option name="METHOD_NAME" value="testCheckLetters2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestGame.testGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Wordly" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.wordly.command.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.wordly.command" />
-      <option name="MAIN_CLASS_NAME" value="org.wordly.command.TestGame" />
-      <option name="METHOD_NAME" value="testGame" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGame.testGame2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGame.testCheckLetters3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wordly" />
       <extension name="coverage">
         <pattern>
@@ -133,26 +103,57 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.wordly" />
       <option name="MAIN_CLASS_NAME" value="org.wordly.TestGame" />
-      <option name="METHOD_NAME" value="testGame2" />
+      <option name="METHOD_NAME" value="testCheckLetters3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSimpleCommands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wordly" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.wordly.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.wordly" />
+      <option name="MAIN_CLASS_NAME" value="org.wordly.TestSimpleCommands" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSimpleCommands.testIncorrectRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wordly" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.wordly.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.wordly" />
+      <option name="MAIN_CLASS_NAME" value="org.wordly.TestSimpleCommands" />
+      <option name="METHOD_NAME" value="testIncorrectRequest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.org.wordly.Main" />
-      <item itemvalue="JUnit.TestGame.testGame2" />
-      <item itemvalue="JUnit.TestGame.testGame" />
-      <item itemvalue="JUnit.TestGame.testGame (1)" />
+      <item itemvalue="JUnit.TestGame.testCheckLetters2" />
+      <item itemvalue="JUnit.TestGame.testCheckLetters3" />
+      <item itemvalue="JUnit.TestSimpleCommands.testIncorrectRequest" />
+      <item itemvalue="JUnit.TestSimpleCommands" />
       <item itemvalue="JUnit.TestGame" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.org.wordly.Main" />
-        <item itemvalue="JUnit.TestGame.testGame2" />
+        <item itemvalue="JUnit.TestSimpleCommands.testIncorrectRequest" />
+        <item itemvalue="JUnit.TestSimpleCommands" />
         <item itemvalue="JUnit.TestGame" />
-        <item itemvalue="JUnit.TestGame.testGame (1)" />
-        <item itemvalue="JUnit.TestGame.testGame" />
+        <item itemvalue="JUnit.TestGame.testCheckLetters3" />
+        <item itemvalue="JUnit.TestGame.testCheckLetters2" />
       </list>
     </recent_temporary>
   </component>
@@ -173,5 +174,9 @@
         <watch expression="symbol" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

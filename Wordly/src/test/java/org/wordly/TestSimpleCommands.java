@@ -1,18 +1,19 @@
-package org.wordly.command;
+package org.wordly;
 
-import org.wordly.User;
-import org.wordly.command.game.Game;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
-public class ProcessCommand implements Command {
 
-    private String message;
+@RunWith(MockitoJUnitRunner.class)
+public class TestSimpleCommands extends TestCommands {
 
-    @Override
-    public Command react(String message, User user) {
+    @Test
+    public void testStart() {
+        sendDefaultUserMessage("/start");
 
-        return switch (message) {
-            case "/start" -> {
-                this.message = """
+        Assert.assertEquals(lastAnswer, """
                                 Привет!
                                 Это бот, с которым можно сыграть в игру Wordly
                                 Суть игры заключается в следующем:
@@ -23,11 +24,14 @@ public class ProcessCommand implements Command {
                                 
                                 Если вы хотите сыграть, то напишите команду game
                                 Удачи!
-                                """;
-                yield new ProcessCommand();
-            }
-            case "/help" -> {
-                this.message = """
+                                """);
+    }
+
+    @Test
+    public void testHelp() {
+        sendDefaultUserMessage("/help");
+
+        Assert.assertEquals(lastAnswer, """
                 Это бот, с которым можно сыграть в игру Wordly
                 Правила игры:
                 1) Бот загадывает слово из 5 букв, а ваша задача заключается в том, чтобы его разгадать
@@ -38,29 +42,21 @@ public class ProcessCommand implements Command {
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
-                """;
-                yield new ProcessCommand();
-            }
-            case "/game" -> {
-                user.setWord();
-                user.setUserAttemptsZero();
-                this.message = "Введите слово из 5 букв";
-                yield new Game();
-            }
-            default -> {
-                this.message = """
+                """);
+    }
+
+    @Test
+    public void testIncorrectRequest() {
+        sendDefaultUserMessage("/sadsad");
+
+        Assert.assertEquals(lastAnswer, """
                 Бот не знает такой команды :(
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
-                """;
-                yield new ProcessCommand();
-            }
-        };
+                """);
     }
 
-    @Override
-    public String getMessage(){
-        return message;
-    }
+
+
 }
