@@ -2,16 +2,14 @@ package org.wordly;
 
 import org.wordly.command.Command;
 import org.wordly.command.ProcessCommand;
-import java.io.*;
-import java.util.*;
 
 public class User {
 
     private final long chatID;
     private int userAttempts;
     private String word;
-    public short storageModel = 0;
-    public Wordly wordly;
+    private short storageModel = 0;
+    private Wordly wordly;
     private Command nextCommand = new ProcessCommand();
 
     public User(long chatID, Wordly wordly) {
@@ -19,12 +17,24 @@ public class User {
         this.wordly = wordly;
     }
 
+    public Wordly getWordly() {
+        return wordly;
+    }
+
     public long getChatID() {
         return chatID;
     }
 
+    public void increaseStorageModel(int number, int position) {
+        storageModel += number * Math.pow(10, position);
+    }
+
     public void setStorageModelZero() {
         storageModel = 0;
+    }
+
+    public short getStorageModel() {
+        return storageModel;
     }
 
     public void changeCommand(Command nextCommand) {
@@ -53,8 +63,7 @@ public class User {
     public String getWord() {
         return word;
     }
-
-    public void setWord() {
-        this.word = wordly.getWord();
+    public void setWord(String word) {
+        this.word = word;
     }
 }

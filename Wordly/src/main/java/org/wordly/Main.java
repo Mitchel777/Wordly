@@ -4,7 +4,7 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import org.wordly.token.EnvApiKeyProvider;
-
+import org.wordly.word.Pseudorandom;
 
 
 public class Main {
@@ -13,7 +13,7 @@ public class Main {
         try {
             TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
 
-            api.registerBot(new Wordly(new EnvApiKeyProvider()));
+            api.registerBot(new Wordly(new EnvApiKeyProvider(), new Pseudorandom()));
         }
         catch (TelegramApiException e) {
             throw new RuntimeException("Cannot register telegram bot : " + e);

@@ -8,6 +8,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.junit.Before;
+import org.wordly.word.RandomForTest;
 
 
 public class TestCommands {
@@ -41,7 +42,7 @@ public class TestCommands {
 
     @Before
     public void setUpBot() throws TelegramApiException {
-        bot = Mockito.spy(new Wordly(() -> ""));
+        bot = Mockito.spy(new Wordly(() -> "", new RandomForTest()));
 
         Mockito.doAnswer(invocationOnMock -> {
             lastAnswer = ((SendMessage) invocationOnMock.getArguments()[0]).getText();

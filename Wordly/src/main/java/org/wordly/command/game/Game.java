@@ -4,10 +4,9 @@ import org.wordly.User;
 import org.wordly.command.Command;
 import org.wordly.command.ProcessCommand;
 
-
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 public class Game implements Command {
     private String message;
@@ -19,7 +18,6 @@ public class Game implements Command {
         //проверка
         String word = user.getWord();
 
-
         if (userWord.length() != 5) {
             if (userWord.length() > 5) {
                 message = "Длина слова превышает 5 букв. Попробуйте снова";
@@ -30,7 +28,7 @@ public class Game implements Command {
             return new Game();
         }
 
-        if (!isWordInFile(userWord)) {
+        if (!isWordInFile(userWord, user.getWordly().getFileReader().getWordList())) {
             message = "Я не знаю такого слова. Введите другое";
             return new Game();
         }
@@ -90,7 +88,7 @@ public class Game implements Command {
         for (int i = 0; i < word.length(); i++) {
             if (word.charAt(i) == userWord.charAt(i)) {
                 guessedIndexes1.add(i);
-                user.storageModel += 2 * Math.pow(10, word.length() - i - 1);
+                user.increaseStorageModel(2, word.length() - i - 1);
             }
         }
         // проверка на нахождение буквы в слове(но не на той позиции)
@@ -105,13 +103,12 @@ public class Game implements Command {
                     int index = isThisLetterInWord(word, symbol, guessedIndexes2);
                     if (index != -1) {
                         guessedIndexes2.add(index);
-                        user.storageModel += Math.pow(10, word.length() - i - 1);
+                        user.increaseStorageModel(1, word.length() - i - 1);
                     }
                 }
             }
         }
-
-        return user.storageModel;
+        return user.getStorageModel();
     }
 
     private int isThisLetterInWord(String word, String symbol, ArrayList<Integer> guessedIndexes) {
@@ -123,18 +120,8 @@ public class Game implements Command {
         return -1;
     }
 
-    private boolean isWordInFile(String word) {
-        String fileName = "src/main/resources/words.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.trim().equalsIgnoreCase(word)) {
-                    return true;
-                }
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return false;
+    private boolean isWordInFile(String word, List<String> wordList) {
+        HashSet<String> words = new HashSet<>(wordList);
+        return words.contains(word);
     }
 }

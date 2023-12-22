@@ -42,10 +42,14 @@ public class ProcessCommand implements Command {
                 yield new ProcessCommand();
             }
             case "/game" -> {
-                user.setWord();
+                user.setWord(user.getWordly().getProvider().getWord());
                 user.setUserAttemptsZero();
                 this.message = "Введите слово из 5 букв";
                 yield new Game();
+            }
+            case "/changeGameMode" -> {
+                this.message = user.getWordly().changeGameMode();
+                yield new ProcessCommand();
             }
             default -> {
                 this.message = """
