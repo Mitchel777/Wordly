@@ -38,14 +38,19 @@ public class ProcessCommand implements Command {
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
+                3)changeGameMode - Смениь режим игры
                 """;
                 yield new ProcessCommand();
             }
             case "/game" -> {
-                user.setWord();
+                user.setWord(user.getWordly().getProvider().getWord());
                 user.setUserAttemptsZero();
                 this.message = "Введите слово из 5 букв";
                 yield new Game();
+            }
+            case "/changeGameMode" -> {
+                this.message = user.getWordly().changeGameMode();
+                yield new ProcessCommand();
             }
             default -> {
                 this.message = """
@@ -53,6 +58,7 @@ public class ProcessCommand implements Command {
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
+                3)changeGameMode - Смениь режим игры
                 """;
                 yield new ProcessCommand();
             }
