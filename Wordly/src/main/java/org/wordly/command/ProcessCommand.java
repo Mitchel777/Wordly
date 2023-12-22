@@ -38,6 +38,7 @@ public class ProcessCommand implements Command {
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
+                3)changeGameMode - Смениь режим игры
                 """;
                 yield new ProcessCommand();
             }
@@ -57,6 +58,7 @@ public class ProcessCommand implements Command {
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
+                3)changeGameMode - Смениь режим игры
                 """;
                 yield new ProcessCommand();
             }

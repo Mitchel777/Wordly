@@ -13,7 +13,7 @@ public class Main {
         try {
             TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
 
-            api.registerBot(new Wordly(new EnvApiKeyProvider(), new Pseudorandom()));
+            api.registerBot(new Wordly(new EnvApiKeyProvider(), new Pseudorandom(null)));
         }
         catch (TelegramApiException e) {
             throw new RuntimeException("Cannot register telegram bot : " + e);

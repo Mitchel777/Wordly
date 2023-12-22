@@ -24,6 +24,7 @@ public class Wordly extends TelegramLongPollingBot {
     public Wordly(ApiKeyProvider keyProvider, IProviderWord provider) {
         super();
         fileReader = new WordFileReader();
+        provider.setFileReader(fileReader);
         try {
             fileReader.readWordsFromFile();
 
@@ -61,12 +62,12 @@ public class Wordly extends TelegramLongPollingBot {
     }
     public String changeGameMode() {
         if (provider.whatTheClass().equals("Pseudorandom")) {
-            provider = new Random();
-            return "Вы перешли из рандомного режима игры в многопользовательский";
+            provider = new Random(fileReader);
+            return "Вы перешли из многопользовательского режима игры в рандомный";
         }
         else {
-            provider = new Pseudorandom();
-            return "Вы перешли из многопользовательского режима игры в рандомный";
+            provider = new Pseudorandom(fileReader);
+            return "Вы перешли из рандомного режима игры в многопользовательский";
         }
     }
 

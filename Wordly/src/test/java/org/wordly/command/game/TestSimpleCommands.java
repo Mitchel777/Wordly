@@ -1,9 +1,10 @@
-package org.wordly;
+package org.wordly.command.game;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.wordly.command.game.TestCommands;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -42,6 +43,7 @@ public class TestSimpleCommands extends TestCommands {
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
+                3)changeGameMode - Смениь режим игры
                 """);
     }
 
@@ -54,9 +56,7 @@ public class TestSimpleCommands extends TestCommands {
                 Бот знает команды:
                 1)game - Начать игру
                 2)help - Информация о боте
+                3)changeGameMode - Смениь режим игры
                 """);
     }
-
-
-
 }

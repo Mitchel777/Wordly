@@ -5,10 +5,10 @@ import org.wordly.WordFileReader;
 public class RandomForTest implements IProviderWord {
     private final String word;
     private WordFileReader fileReader;
-    public RandomForTest() {
+    public RandomForTest(WordFileReader fileReader) {
+        this.fileReader = fileReader;
         word = "пчела";
     }
-
     @Override
     public String getWord() {
         return word;

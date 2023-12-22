@@ -9,6 +9,9 @@ public class Random implements IProviderWord  {
 
     private String word;
     private WordFileReader fileReader;
+    public Random(WordFileReader fileReader) {
+        this.fileReader = fileReader;
+    }
 
     public void setRandomWord() {
         int randomNumber = (int) (Math.random() * 1446) + 1;

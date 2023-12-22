@@ -82,7 +82,7 @@ public class Game implements Command {
         return result;
     }
 
-    private short checkLetters(String word, String userWord, User user) {
+    short checkLetters(String word, String userWord, User user) {
         ArrayList<Integer> guessedIndexes1 = new ArrayList<Integer>();
         // проверка на совадение соответсвенных букв в словах
         for (int i = 0; i < word.length(); i++) {
@@ -120,7 +120,7 @@ public class Game implements Command {
         return -1;
     }
 
-    private boolean isWordInFile(String word, List<String> wordList) {
+    boolean isWordInFile(String word, List<String> wordList) {
         HashSet<String> words = new HashSet<>(wordList);
         return words.contains(word);
     }

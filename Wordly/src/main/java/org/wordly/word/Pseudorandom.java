@@ -16,7 +16,8 @@ public class Pseudorandom implements IProviderWord {
     private int indexOfNewWord = 0;
     private ArrayList<Integer> numberOfTheWords = new ArrayList<>();
 
-    public Pseudorandom() {
+    public Pseudorandom(WordFileReader fileReader) {
+        this.fileReader = fileReader;
         pseudorandomIndex();
 
         Timer t = new Timer();
@@ -32,7 +33,7 @@ public class Pseudorandom implements IProviderWord {
                         indexOfNewWord ++;
                     }
                 },
-                0,
+                1000,
                 60000);
     }
 

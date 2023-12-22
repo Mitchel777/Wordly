@@ -1,4 +1,4 @@
-package org.wordly;
+package org.wordly.command.game;
 
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
@@ -8,6 +8,10 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.junit.Before;
+import org.wordly.User;
+import org.wordly.WordFileReader;
+import org.wordly.Wordly;
+import org.wordly.token.EnvApiKeyProvider;
 import org.wordly.word.RandomForTest;
 
 
@@ -42,7 +46,7 @@ public class TestCommands {
 
     @Before
     public void setUpBot() throws TelegramApiException {
-        bot = Mockito.spy(new Wordly(() -> "", new RandomForTest()));
+        bot = Mockito.spy(new Wordly(() -> "", new RandomForTest(null)));
 
         Mockito.doAnswer(invocationOnMock -> {
             lastAnswer = ((SendMessage) invocationOnMock.getArguments()[0]).getText();
@@ -52,3 +56,4 @@ public class TestCommands {
         Mockito.doCallRealMethod().when(bot).onUpdateReceived(ArgumentMatchers.any());
     }
 }
+
