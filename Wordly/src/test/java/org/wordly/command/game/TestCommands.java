@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.wordly.User;
 import org.wordly.WordFileReader;
 import org.wordly.Wordly;
-import org.wordly.token.EnvApiKeyProvider;
+import org.wordly.token.ApiKeyProvider;
 import org.wordly.word.RandomForTest;
 
 
@@ -21,10 +21,17 @@ public class TestCommands {
     protected String lastAnswer;
     protected String word;
     protected Wordly bot;
+    private String token;
+    public ApiKeyProvider keyProvider;
 
     public User getDefaultUser() {
         return bot.getUser(UserChatID);
     }
+
+    public void setToken() {
+        token = keyProvider.getApiKey();
+    }
+
 
     public void sendMessage(long chatID, String textMessage) {
         Chat chat = new Chat(chatID, "private");
@@ -46,7 +53,7 @@ public class TestCommands {
 
     @Before
     public void setUpBot() throws TelegramApiException {
-        bot = Mockito.spy(new Wordly(() -> "", new RandomForTest(null)));
+        bot = Mockito.spy(new Wordly(() -> "", new RandomForTest(new WordFileReader())));
 
         Mockito.doAnswer(invocationOnMock -> {
             lastAnswer = ((SendMessage) invocationOnMock.getArguments()[0]).getText();

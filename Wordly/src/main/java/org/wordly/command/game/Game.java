@@ -17,7 +17,7 @@ public class Game implements Command {
 
         //проверка
         String word = user.getWord();
-
+        userWord = userWord.toLowerCase();
         if (userWord.length() != 5) {
             if (userWord.length() > 5) {
                 message = "Длина слова превышает 5 букв. Попробуйте снова";
